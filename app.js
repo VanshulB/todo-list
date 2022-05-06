@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-var items= ["Buy food", "Cook food", "Eat food" ];
+var items= ["Attend MLH Hackathon", "Learn to code in Javascript", "Apply for MLH Fellowship" ];
 
 
 const app = express();
