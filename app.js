@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+var items= ["Buy food", "Cook food", "Eat food" ];
 
 
 const app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use("/public", express.static("public"));
 
 app.get("/", function(req, res){
     // res.send("<h1>Hello world</h1>");
@@ -22,17 +24,37 @@ app.get("/", function(req, res){
     // console.log(day);
     
     // res.send("Hello World");
-    res.render("list", {kindOfDay: day});
+    res.render("list", {kindOfDay: day, items: items});
 
 });
 
 app.post("/", function(req, res){
-    var ans = req.body.newItem;
-    console.log(ans);
+    item = req.body.newItem;
+    items.push(item);
+    res.redirect("/");
+    
+
 });
 
 
 app.listen(3000, function (){
     console.log("Server is running on port 3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
